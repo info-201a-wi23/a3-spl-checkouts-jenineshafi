@@ -5,82 +5,61 @@ output: html_document
 
 ### Introduction
 
-An introduction of the data and a description of the trends/books/items you are choosing to analyze (and why!)
+This assignment utilizes the Seattle Public Library's 2017-2023 dataset of items checked out at least 10 times a month to analyze book checkouts. This dataset includes information about the item itself, such as title, author, publication year, subject, etc., as well as when the item was checked out. This analysis includes an exploration of overall book checkouts over time, as well as a focus on digital book checkouts exclusively over the years and specifically over 2022. The last graph focuses on checkout patterns of *The House of Broken Angels* by Luis Alberto Urrea, the most checked out digital book of 2022. I chose to focus on digital book checkouts, which includes ebooks and audiobooks, because I believed that digital checkouts likely were impacted by the COVID-19 pandemic. As someone who almost exclusively uses digital books, I was also curious as to what digital books have been checked out most in recent years, in addition to the difference between ebook and audiobook checkout patterns. 
+
+</br>
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
+42.7% of checkouts included in this dataset are for digital books, which includes ebooks and audiobooks. The number of digital book checkouts has been increasing since 2017, with the highest number of digital checkouts being 1,962,294 checkouts in 2022. The number of audiobook checkouts has also been increasing since 2017, with the highest number of audiobook checkouts being 946,935 in 2022. The number of ebook checkouts however, peaked in 2020 with 1,080,133 checkouts and has since been slowly decreasing. The most checked out digital book of 2022 was *The House of Broken Angels* by Luis Alberto Urrea. The month in 2022 with the most number of checkouts was December 2022 with 188,201 checkouts. The most checked out digital book of January, March, May, June, August, and December of 2022 was *Braiding Sweetgrass: Indigenous Wisdom, Scientific Knowledge, and the Teachings of Plants* by Robin Wall Kimmerer. The most checked out digital book of February 2022 was *The Five Wounds: A Novel* by Kirstin Valdez Quade. The most checked out digital book of April 2022 was *Music is History* by Questlove. The most checked out digital book of July 2022 was *The Girl in His Shadow: A Novel* by Audrey Blake. The most checked out digital book of September and October 2022 was *The House of Broken Angels* by Luis Alberto Urrea. The most checked out digital book of November 2022 was *A Snake Falls to Earth* by Darcie Little Badger. 
 
-These will likely be calculated using your DPLYR skills, answering questions such as:
-
-- What is the average number of checkouts for each item?
-- What is the month or year with the most/least checkouts for a book that you're interested in?
-- What is the month or year with the most/least checkouts for ebooks?
-- How has the number of print book checkouts changed over time?
-
-Feel free to calculate and report values that you find relevant.
+</br>
 
 ### The Dataset
 
-- Who collected/published the data?  
-- What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?
-- How was the data collected or generated?  
-- Why was the data collected?  
-- What, if any, ethical questions do you need to consider when working with this data?  
-- What are possible limitations or problems with this data?   (at least 200 words)
+**- Who collected/published the data?**    
+> The Seattle Public Library collected the data and it is published on the official Seattle government's Open Data website.
 
+**- What are the parameters of the data?**    
+> The parameters of the data are that it includes monthly counts of library data beginning in 2016 that continues to be collected. There are currently 42,033,208 rows of Checkout Counts in this dataset. The dataset includes the month and year that the item was checked out in, as well as the title, author, subject, publisher, and publication year of the item. This dataset includes checkouts for both electronic and physical items, including books, audiobooks, ebooks, CDs, movies, and more. The dataset includes   
 
-### First Trends Over Time Chart
+**- How was the data collected or generated?**      
+> The data was collected largely due to the help of George Legrady's "Making the Invisible Visible" artwork that was installed at the Central Library in 2005. Legrady's work allowed David Christensen and Nathan Cosgray, data librarian and systems analyst, respectively, to improve their process of creating a large database by allowing that to capture a more comprehensive view of the history of checkouts.  
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+**- Why was the data collected?**      
+> The data was already in the process of being collected, but at the same time, the City of Seattle began the Open Data Initiative which encouraged agencies to make data publicly and freely available. This effort was created in order to improve data transparency, civic problem-solving, and collaboration. 
 
-The first chart that you will create and include will show the trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+**- What, if any, ethical questions do you need to consider when working with this data?**    
+> As expressed in The Seattle Public Library's Shelf Talk Blog article titled "How a Digital Artwork Helped The Seattle Public Library Lead in Book Data," the initial issue when Christensen and Cosgray was protecting patron privacy while also creating a comprehensive view of the checkout data. However, I don't see any ethical issues with the data that is now published, especially because the data is deidentified so there is no way of tracking an individual's checkout patterns. The only data included in this dataset relate to the item being checked out, not the library patron, therefore I do not see any major ethical questions with this data. 
 
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
+**- What are possible limitations or problems with this data?**      
+> One of the limitations with the dataset is that it only includes data beginning in 2017, which is relatively recent and doesn't allow us to explore larger checkout patterns in the Seattle area. Another limitation of this data is that same items are listed with multiple titles, so it is more difficult to see the total number of checkouts. Similarly, author names are listed in several ways, for example “Rick Riordan” and “Riordan, Rick,” making it easier to lose track of the checkouts for each author. Also, there is no checkout day listed for each item in the dataset, which may be useful if one wanted to examine checkout patterns throughout the month rather than looking at checkouts for an entire month. Another limitation is that the library location is not included for each checkout, which may allow for a user to look at checkout patterns in relation to an area’s larger demographic characteristics without creating privacy concerns for individual users. A problem with this dataset is also that there are many categories listed in the "Subjects" column even though some categories, such as "Nonfiction," are much broader categories than others, such as "Pets," therefore it would likely benefit the user to see these subjects broken up into broader and more specific categories. Lastly, there are inconsistencies in the formatting of the data, likely because there are numerous systems that the data came from, but this makes it more difficult to clean and sort the data and easier to accidentally leave out an item.
 
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
+</br>
 
-Here's an example of how to run an R script inside an RMarkdown file:
+### Digital and Physical Book Checkouts over Time (2017-2022)
 
-``````{r, echo = FALSE, warning = FALSE, code = readLines("chart1_example.R")}
+This chart depicts the number of checkouts for ebooks, audiobooks, and physical books from 2017 to 2022. I chose to include this chart in order to view if the COVID-19 pandemic has shifted checkout patterns, specifically in relation to digital books. Based on the graph below, the COVID-19 pandemic resulted in a sharp decreased in the number of physical books being checked out, yet audiobook and ebook checkouts continued to increase, likely because library patrons either could not check out books in person due to COVID restrictions and/or felt safer using the online library system. Additionally, this graph reveals that, for the most part, audiobook an debook checkouts have been steadily increasing since 2017 and there are currently a greater amount of audion=book and ebook checkouts compared to physical book checkouts. 
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE, error = FALSE, code = readLines("chart1.R")}
 ```
 
-### Second Trends Over Time Chart
+</br>
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+### Ebook and Audiobook Checkouts over 2022 
 
-The second chart that you will create and include will show another trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+This chart depicts digital book checkouts over 2022, broken down into audiobook and ebook checkouts. I chose to include this chart because I was specifically interested in digital book checkouts after learning from the first graph that digital book checkouts are higher than physical book checkouts. I also am a more frequent user of digital books, especially audiobooks, and I was interested in if audiobooks were consistently checked out at a higher rate or if it fluctuated greatly from month to month. I chose to analyze 2022 specifically because it was the most recent year to analyze, which I thought would give me a most comprehensive view of digital book checkout patterns. From the graph we learn that digital checkouts are lowest in April 2022 and highest in December 2022. It appears as though the number of audiobook chceckouts compared to ebook checkouts is relatively similar, with some variation. It does not appear as though there is a steady pattern in digital checkouts throughout the year. 
 
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
+```{r, echo = FALSE, warning = FALSE, message = FALSE, error = FALSE, code = readLines("chart2.R")}
 ```
 
-### Your Choice
+</br>
 
-The last chart is up to you. It could be a line plot, scatter plot, histogram, bar plot, stacked bar plot, and more. Here are some requirements to help guide your design:
+### *The House of Broken Angels* Checkouts over 2022
 
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
+This chart shows the checkout trends for *The House of Broken Angels* by Luis Alberto Urrea. I chose to create this graph after discovering that this novel was the most checked out digital book of 2022 as mentioned in the "Summary Information" section above. I also mentioned above that this novel was the most checked out digital book in September and October of 2022, so I was curious to see the checkout patterns in other times of the year since this was the most checked out digital book for the entire year. I have also wanted to read this book for a while, which made me more curious about the checkout patterns. After seeing the graph, we learnm that most of the checkouts of *The House of Broken Angels* were ebooks, rather than audiobooks. Additionally, we see that the most digital checkouts for this novel were in September and October of 2022, which means that enough individuals checked out this novel in these two months to make it the most checked out digital novel of 2022. 
 
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
+```{r, echo = FALSE, warning = FALSE, message = FALSE, error = FALSE, code = readLines("chart3.R")}
 ```
 
 
